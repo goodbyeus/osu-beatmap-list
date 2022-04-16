@@ -13,69 +13,67 @@ class App(Tk):
         self.resizable(width=False, height=False)
         self.geometry("450x130")
 
-        self.inputtexto = StringVar()
-        self.outputtexto = StringVar()
+        self.input = StringVar()
 
         frame = LabelFrame(self, padx=5, pady=5, bg="#393a3b", borderwidth=0)
         frame.place(x=10, y=10)
 
-        instruccion = Label(
+        instruction = Label(
             frame, text="osu! songs folder :", bg="#393a3b", fg="#91d9ff"
         ).grid(row=0, column=0)
 
-        inputboton = Entry(
+        input_bar = Entry(
             frame,
-            textvariable=self.inputtexto,
+            textvariable=self.input,
             width=40,
             bg="#BFBFBF",
             borderwidth=0,
             insertbackground="yellow",
         ).grid(row=0, column=1)
 
-        startboton = Button(
+        start_button = Button(
             self,
             text="Go",
             width=12,
             height=2,
-            command=self.buscar,
+            command=self.start,
             bg="#393a3b",
             fg="white",
             borderwidth=0,
         ).place(x=120, y=80)
 
-        broswseboton = Button(
+        broswse_button = Button(
             self,
             text="Browse",
             padx=5,
             pady=6,
-            command=self.browse,
+            command=self.open_directory,
             bg="#393a3b",
             fg="white",
             borderwidth=0,
         ).place(x=382, y=10)
 
-        limpiarboton = Button(
+        clean_button = Button(
             self,
-            text="Clear text values",
-            command=self.limpiar,
+            text="Clear input bar",
+            command=self.clean,
             height=2,
             bg="#393a3b",
             fg="white",
             borderwidth=0,
         ).place(x=242, y=80)
 
-    def browse(self):
+    def open_directory(self):
         b = filedialog.askdirectory()
-        self.inputtexto.set(str(b))
+        self.input.set(str(b))
 
-    def buscar(self):
-        gui_input = self.inputtexto.get()
+    def start(self):
+        gui_input = self.input.get()
         output = analize(gui_input)
         if len(gui_input) != 0:
             messagebox.showinfo("Beatmap directory", output)
         else:
             messagebox.showerror("Error", "Invalid path")
 
-    def limpiar(self):
-        self.inputtexto.set("")
-        self.outputtexto.set("")
+    def clean(self):
+        self.input.set("")
