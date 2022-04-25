@@ -4,4 +4,4 @@ Simple to use app that reads beatmap information from the osu! songs folder and 
 
 ### Disclaimer
 - All trademarks are property of their respective owners and licensors.
-- This project is not affiliated with "osu", "ppy" or "Peppy".
+- This project is not affiliated with "osu!", "ppy" or "Peppy".
